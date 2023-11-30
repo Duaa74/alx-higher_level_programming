@@ -2,6 +2,6 @@
 for i in range(0, 10):
     for j in range(i + 1, 10):
         if j == 10:
-            print("{}{}".format(i, j), end="\n")
+            print("0{}{}".format(i, j))
         else:
-            print("{}{}, ".format(i, j), end="")
+            print("0{}{}, ".format(i, j), end="")
