@@ -1,37 +1,30 @@
 #!/usr/bin/python3
-"""sqare module"""
+"""Define a class Square."""
 
 
 class Square:
-    """define a square"""
+    """Represent a square."""
 
-    def __init__(self, size=0):
-        """constractor.
+    def __init__(self, size=0, position=(0, 0)):
+        """Initialize a new square.
 
-        args:
-                        size: size of the square
-        raisees:
-            typeerror: type of the square
-            valueerror: value of the square
+        Args:
+            size (int): The size of the new square.
+            position (int, int): The position of the new square.
         """
-
         self.size = size
+        self.position = position
 
     @property
     def size(self):
-        """property for size of the square
-
-        raises:
-            typeerror: type of the square
-            valueerror: value of the square
-        """
+        """Get/set the current size of the square."""
         return self.__size
 
     @size.setter
     def size(self, value):
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
 
@@ -52,16 +45,17 @@ class Square:
         self.__position = value
 
     def area(self):
-        """area of the object
-
-        returns:
-            the size of the object
-        """
-        return self.__size**2
+        """Return the current area of the square."""
+        return self.__size * self.__size
 
     def my_print(self):
-        """print the object"""
-        for i in range(self.size):
-            for j in range(self.size):
-                print("#", end="\n" if j is self.size - 1 and i != j else "")
-        print()
+        """Print the square with the # character."""
+        if self.__size == 0:
+            print("")
+            return
+
+        [print("") for i in range(0, self.__position[1])]
+        for i in range(0, self.__size):
+            [print(" ", end="") for j in range(0, self.__position[0])]
+            [print("#", end="") for k in range(0, self.__size)]
+            print("")
